@@ -1,44 +1,124 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-    <title>Edit Peminjaman</title>
+    <meta charset="UTF-8">
+    <title>Edit Peminjaman Alat</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f7f9fc;
+            padding: 40px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: #fff;
+            padding: 25px 30px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 25px;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 6px;
+            margin-top: 15px;
+        }
+        select, input[type="date"], button {
+            width: 100%;
+            padding: 10px;
+            font-size: 15px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+        }
+        select:focus, input[type="date"]:focus {
+            border-color: #3498db;
+            outline: none;
+        }
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            margin-top: 8px;
+        }
+        .checkbox-group label {
+            margin-left: 8px;
+            font-weight: normal;
+        }
+        button {
+            background: #f39c12;
+            color: #fff;
+            font-size: 16px;
+            margin-top: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+            border: none;
+        }
+        button:hover {
+            background: #e67e22;
+        }
+        .back {
+            display: inline-block;
+            margin-bottom: 15px;
+            text-decoration: none;
+            color: #555;
+            font-size: 14px;
+        }
+        .back:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-    <h2>Edit Data Peminjaman</h2>
-    <form action="<?= site_url('peminjaman/update'); ?>" method="post">
-        <input type="hidden" name="id_peminjaman" value="<?= $peminjaman->id_peminjaman; ?>">
+
+<div class="container">
+    <a href="<?= site_url('peminjaman'); ?>" class="back">← Kembali ke Daftar Peminjaman</a>
+    <h2>Edit Peminjaman Alat</h2>
+
+    <form method="post" action="<?= site_url('peminjaman/update') ?>">
+        <input type="hidden" name="id_peminjaman" value="<?= $peminjaman->id_peminjaman ?>">
 
         <label>Mahasiswa:</label>
         <select name="id_mahasiswa" required>
-            <?php foreach ($mahasiswa as $m): ?>
-                <option value="<?= $m->id_mahasiswa; ?>" <?= ($peminjaman->id_mahasiswa == $m->id_mahasiswa) ? 'selected' : ''; ?>>
-                    <?= $m->nama; ?>
+            <option value="">-- Pilih Mahasiswa --</option>
+            <?php foreach($mahasiswa as $m): ?>
+                <option value="<?= $m->id_mahasiswa ?>" <?= ($m->id_mahasiswa == $peminjaman->id_mahasiswa) ? 'selected' : '' ?>>
+                    <?= $m->nama ?>
                 </option>
             <?php endforeach; ?>
-        </select><br><br>
+        </select>
 
         <label>Alat:</label>
         <select name="id_alat" required>
-            <?php foreach ($alat as $a): ?>
-                <option value="<?= $a->id_alat; ?>" <?= ($peminjaman->id_alat == $a->id_alat) ? 'selected' : ''; ?>>
-                    <?= $a->nama_alat; ?>
+            <option value="">-- Pilih Alat --</option>
+            <?php foreach($alat as $a): ?>
+                <option value="<?= $a->id_alat ?>" <?= ($a->id_alat == $peminjaman->id_alat) ? 'selected' : '' ?>>
+                    <?= $a->nama_alat ?>
                 </option>
             <?php endforeach; ?>
-        </select><br><br>
+        </select>
 
         <label>Tanggal Pinjam:</label>
-        <input type="date" name="tanggal_pinjam" value="<?= $peminjaman->tanggal_pinjam; ?>" required><br><br>
+        <input type="date" name="tanggal_pinjam" value="<?= $peminjaman->tanggal_pinjam ?>" required>
 
         <label>Tanggal Harus Kembali:</label>
-        <input type="date" name="tanggal_kembali_expected" value="<?= $peminjaman->tanggal_kembali_expected; ?>" required><br><br>
+        <input type="date" name="tanggal_kembali_expected" value="<?= $peminjaman->tanggal_kembali_expected ?>" required>
 
         <label>Tanggal Kembali Aktual:</label>
-        <input type="date" name="tanggal_kembali_actual" value="<?= $peminjaman->tanggal_kembali_actual; ?>" required><br><br>
+        <input type="date" name="tanggal_kembali_actual" value="<?= $peminjaman->tanggal_kembali_actual ?>" required>
 
-        <label>Apakah alat rusak?</label>
-        <input type="checkbox" name="status_rusak" value="1" <?= ($peminjaman->biaya_perbaikan > 0) ? 'checked' : ''; ?>> Ya<br><br>
+        <div class="checkbox-group">
+            <input type="checkbox" name="status_rusak" value="1" id="rusak" <?= ($peminjaman->biaya_perbaikan > 0) ? 'checked' : '' ?>>
+            <label for="rusak">Apakah alat rusak?</label>
+        </div>
 
-        <button type="submit">Perbarui</button>
+        <button type="submit">Perbarui Data</button>
     </form>
+</div>
+
 </body>
 </html>

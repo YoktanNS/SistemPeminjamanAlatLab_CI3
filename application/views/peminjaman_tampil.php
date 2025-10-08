@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Data Peminjaman Alat</title>
+  <title>Data Peminjaman Alat </title>
 </head>
 <body>
   <center><h1>Daftar Peminjaman Alat Laboratorium</h1></center>

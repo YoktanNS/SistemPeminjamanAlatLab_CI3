@@ -102,7 +102,7 @@
         <label>Tanggal Harus Kembali:</label>
         <input type="date" name="tanggal_kembali_expected" required>
 
-        <label>Tanggal Kembali Aktual:</label>
+        <label>Tanggal Kembali:</label>
         <input type="date" name="tanggal_kembali_actual" required>
 
         <div class="checkbox-group">

@@ -23,7 +23,7 @@
             <th>Alat</th>
             <th>Tgl Pinjam</th>
             <th>Harus Kembali</th>
-            <th>Kembali Aktual</th>
+            <th>Kembali</th>
             <th>Denda</th>
             <th>Biaya Perbaikan</th>
             <th>Total Biaya</th>
