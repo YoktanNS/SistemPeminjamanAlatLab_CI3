@@ -1,19 +1,27 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <title>Tambah Data Peminjaman</title>
-</head>
-<body>
-  <center><h1>Tambah Data Peminjaman</h1></center>
-  <form action="<?php echo base_url().'peminjaman/tambah_aksi'; ?>" method="post">
-    <table style="margin:20px auto;">
-      <tr><td>Nama Mahasiswa</td><td><input type="text" name="nama_mahasiswa" required></td></tr>
-      <tr><td>Nama Alat</td><td><input type="text" name="nama_alat" required></td></tr>
-      <tr><td>Tanggal Pinjam</td><td><input type="date" name="tanggal_pinjam" required></td></tr>
-      <tr><td>Harus Kembali</td><td><input type="date" name="tanggal_kembali_expected" required></td></tr>
-      <tr><td></td><td><input type="submit" value="Simpan"></td></tr>
-    </table>
-  </form>
-</body>
-</html>
+<h2>Tambah Peminjaman Alat</h2>
+<form method="post" action="<?= site_url('peminjaman/simpan'); ?>">
+
+  <label>Mahasiswa</label><br>
+  <select name="id_mahasiswa" required>
+    <option value="">-- Pilih Mahasiswa --</option>
+    <?php foreach ($mahasiswa as $m): ?>
+      <option value="<?= $m->id_mahasiswa; ?>"><?= $m->nama; ?></option>
+    <?php endforeach; ?>
+  </select><br><br>
+
+  <label>Alat</label><br>
+  <select name="id_alat" required>
+    <option value="">-- Pilih Alat --</option>
+    <?php foreach ($alat as $a): ?>
+      <option value="<?= $a->id_alat; ?>"><?= $a->nama_alat; ?></option>
+    <?php endforeach; ?>
+  </select><br><br>
+
+  <label>Tanggal Pinjam</label><br>
+  <input type="date" name="tanggal_pinjam" required><br><br>
+
+  <label>Tanggal Harus Kembali</label><br>
+  <input type="date" name="tanggal_kembali_expected" required><br><br>
+
+  <button type="submit">Simpan</button>
+</form>

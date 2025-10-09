@@ -102,14 +102,6 @@
         <label>Tanggal Harus Kembali:</label>
         <input type="date" name="tanggal_kembali_expected" required>
 
-        <label>Tanggal Kembali:</label>
-        <input type="date" name="tanggal_kembali_actual" required>
-
-        <div class="checkbox-group">
-            <input type="checkbox" name="status_rusak" value="1" id="rusak">
-            <label for="rusak">Apakah alat rusak?</label>
-        </div>
-
         <button type="submit">Simpan Data</button>
     </form>
 </div>
